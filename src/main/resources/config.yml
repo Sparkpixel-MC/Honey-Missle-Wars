@@ -1,0 +1,95 @@
+# =====================================================================
+#  Honey Missile Wars - plugin configuration
+#  All messages use MiniMessage formatting: https://docs.advntr.dev/minimessage
+#  Any message can be overridden by adding a "messages." section with the
+#  same key used in the code (e.g. messages.queue.joined).
+# =====================================================================
+
+# Message language. "en" = built-in English defaults; "zh" = bundled Simplified
+# Chinese bundle (messages_zh.yml, extracted to the plugin folder on first use).
+language: "en"
+
+world:
+  # Folder (relative to the plugin data folder, or absolute) where slime world
+  # files are stored by the file loader.
+  slime-dir: "slime_worlds"
+  # Name of the imported base template (the anvil map imported with /hmwadmin import).
+  base-template: "hmw_base"
+  # Where players are sent when a game ends.
+  # hub-world: a normal bukkit world name; if it cannot be found the first server world is used.
+  # return-server: name of a BungeeCord/Velocity lobby server to send players back to.
+  #                Works on Velocity too (it speaks the classic BungeeCord plugin channel);
+  #                make sure "bungee-plugin-channel-enabled = true" in velocity.toml (default).
+  #                Takes priority over hub-world when non-empty.
+  hub-world: "world"
+  return-server: ""
+  # BungeeCord dedicated-server mode: every player who connects to this server is
+  # put into the match queue automatically (enable when this server only runs HMW).
+  # Arena preference sent by the HMWLobby companion plugin is honoured when present.
+  auto-join-on-connect: false
+
+game:
+  max-instances: 8            # maximum simultaneous game worlds (RAM! each instance holds a copy of the map)
+  max-players: 16             # players per game (queue launches with at most this many)
+  min-players-to-start: 2     # smallest team total the start button / queue launch accepts
+  auto-start-seconds: 20      # lobby mode: auto start countdown once both teams are occupied; 0 = button only
+  countdown-seconds: 4        # "3..2..1" length (map default: 4s)
+  end-seconds: 10             # fireworks time before returning to hub
+  default-arena: CLASSIC      # CLASSIC, CLIFF, SLOPE, HILL, VALLEY, BRIDGE, ISLAND, WALL, HARDCORE, HONEY, THICK, TOWERS
+  default-missile-set: CLASSIC  # ALL, CLASSIC, HONEY_CLASSIC, EXPLOSIVE, RUSH, SWITCH
+  rejoin-timeout-seconds: 300 # how long after disconnect you may rejoin a running game
+  breach-scan-interval-ticks: 5   # how often wall-breach / portal-destroy scans run
+  epsilon-ceiling-interval-ticks: 20  # piston->slime ceiling guard (stops missiles climbing over walls)
+  solo-mode-allowed: true     # allow starting with only one team occupied (map "singleplayer mode")
+  tnt-fuse-ticks: 20          # cap for TNT fuses in game worlds (20 = explodes 1s after ignition)
+
+  # Default values for the 10+ in-game rules. Players can still change these
+  # per match on the option signs in the settings room (like the original map).
+  options:
+    item-rate: 2              # 3 = Fast, 2 = Normal, 1 = Slow, 0 = Ultra Slow
+    respawn-time: 2           # 0 = Instant, 1 = 3 sec, 2 = 5 sec, 3 = 10 sec
+    jump-boost: 0             # 0 = off, 1..3 = Jump Boost II / IV / VI
+    speed-boost: 0            # 0 = off, 1..3 = Speed I / II / IV
+    pickaxe: false            # permanent iron pickaxe
+    fall-damage: false
+    exploding-arrows: false   # TNT arrows
+    elytra: false             # 3-second elytra for everyone
+    item-stacking: false      # true = "Unlimited Items" (no per-item caps)
+    wall-missiles: false      # allow placing missiles inside the enemy walls/portal
+
+# Matchmaking: the waiting room world IS the queue. The first /hmw join starts
+# the countdown; everyone joining afterwards waits in the same batch. When the
+# countdown ends a fresh arena is cloned, the batch is teleported in and the
+# battle starts immediately (no lobby phase, no 3-2-1).
+queue:
+  enabled: true
+  countdown-seconds: 10       # countdown once the first player joins the waiting room
+  waiting-room:
+    # Slime template of the waiting room world (your own map). Import it with
+    # "/hmwadmin import <world folder> hmw_waiting_room". It is loaded once at
+    # first use, read-only (never saved), and shared by all queued players.
+    template: "hmw_waiting_room"
+  wait-zone:
+    # Fallback waiting area used while the waiting room template is missing,
+    # and (with use-spawn: false) the spawn point inside the waiting room world.
+    world: "world"            # fallback vanilla world name
+    use-spawn: true           # true = use that world's/waiting room's spawn point, ignore coordinates below
+    x: 0
+    y: 100
+    z: 0
+    yaw: 0
+    pitch: 0
+
+rewards:
+  enabled: true
+  currency: BOTH              # VAULT, XP or BOTH
+  kill: 10.0                  # kill an enemy player
+  missile: 5.0                # place a missile
+  shield: 2.0                 # deploy a shield
+  breach: 15.0                # enemy wall layer breached (paid to every player of the attacking team)
+  win: 100.0                  # member of the winning team
+  participation: 20.0         # played the game to the end
+  xp-per-coin: 0.2            # vanilla XP points granted per coin when currency includes XP
+
+stats:
+  save-interval-minutes: 5

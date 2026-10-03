@@ -1,0 +1,23 @@
+name: HMWLobby
+version: "${version}"
+main: top.sparkpixel.hmwlobby.HmwLobbyPlugin
+api-version: "1.21"
+description: Honey Missile Wars lobby companion - bind NPCs to /hmwlobby join <arena>
+author: sparkpixel
+
+commands:
+  hmwlobby:
+    description: Join a Honey Missile Wars game on the game server
+    usage: |
+      /<command> join [arena] - join the game (arena optional)
+      /<command> list - list available arenas
+      /<command> reload - reload the config
+    aliases: [hmwl]
+
+permissions:
+  hmwlobby.use:
+    description: Use /hmwlobby join and list
+    default: true
+  hmwlobby.admin:
+    description: Use /hmwlobby reload
+    default: op

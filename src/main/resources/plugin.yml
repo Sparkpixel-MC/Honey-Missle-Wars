@@ -1,0 +1,27 @@
+name: HoneyMissileWars
+version: "${version}"
+main: top.sparkpixel.hmw.HoneyMissileWarsPlugin
+api-version: "1.21"
+description: "Honey Missile Wars - full plugin conversion of the vanilla-datapack map, with SlimeWorld multi-instance support."
+authors: [Chopper2112, Supersette, kruthers]
+website: https://www.yeggs.org/honey-missile-wars-2-0-0
+# ASP provides the SlimeWorld API at runtime; Vault/PlaceholderAPI are optional integrations.
+softdepend: [AdvancedSlimePaper, SlimeWorldPlugin, Vault, PlaceholderAPI]
+
+commands:
+  hmw:
+    description: "Honey Missile Wars player commands"
+    usage: "/hmw <join|leave|list|stats|top|book|credits>"
+    permission: hmw.use
+  hmwadmin:
+    description: "Honey Missile Wars admin commands"
+    usage: "/hmwadmin <import|templates|list|forcestart|end|setarena|reload>"
+    permission: hmw.admin
+
+permissions:
+  hmw.use:
+    description: "Use /hmw player commands"
+    default: true
+  hmw.admin:
+    description: "Use /hmwadmin commands"
+    default: op

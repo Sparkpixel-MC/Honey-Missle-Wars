@@ -1,0 +1,74 @@
+# =====================================================================
+#  Honey Missile Wars - 简体中文语言包 (language: zh)
+#  所有消息均使用 MiniMessage 格式: https://docs.advntr.dev/minimessage
+#  在 config.yml 中设置 language: zh 即可启用本文件。
+#  任何一条消息都可以直接在本文件中修改；也可以在 config.yml 的
+#  "messages." 段中用相同的 key 覆盖。
+# =====================================================================
+
+# 通用
+welcome: "<yellow>欢迎来到 Honey Missile Wars（蜂蜜导弹大战）！</yellow> <gray>自动匹配已开启，比赛开始前请耐心等待。</gray>"
+rejoin: "<yellow>欢迎回来！你已被送回战斗中。</yellow>"
+
+# 加入 / 离开
+join.already: "<red>你已经在一局游戏中了。请先使用 /hmw leave。</red>"
+join.creating: "<yellow>正在为你准备新的竞技场……</yellow>"
+join.failed: "<red>创建游戏实例失败，请联系管理员。</red>"
+join.full: "<red>全部 <max> 个游戏实例都已满员，请稍后再试。</red>"
+leave.not-in-game: "<red>你还没有加入任何游戏。</red>"
+leave.left: "<gray><player> 离开了游戏。</gray>"
+
+# 排队 / 等待室
+queue.joined: "<yellow>你已进入排队队列。</yellow> <gray>比赛将自动开始。</gray>"
+queue.left: "<gray>你已退出排队队列。</gray>"
+queue.status: "<aqua>排队中 <current>/<max></aqua>"
+queue.countdown-started: "<green>倒计时开始！比赛将在 {seconds} 秒后开始</green>"
+queue.countdown: "<aqua>比赛将在 {seconds} 秒后开始</aqua>"
+queue.not-enough: "<red>人数不足以开局，重新开始倒计时。</red>"
+
+# 导弹 / 道具
+missile.cannot-place: "<red>不能在这里放置导弹！可能离敌方墙壁太近了。</red>"
+missile.placed: "<gray>导弹已部署：<{team_color}><name></{team_color}></gray>"
+missile.structure-missing: "<red>导弹结构 <name> 无法加载。</red>"
+items.already-missile: "<red>你已经持有 <name> 了！</red>"
+items.already-arrows: "<red>你的箭矢还未用完！</red>"
+items.already-special: "<red>你已经持有 <name> 了！</red>"
+
+# 比赛
+game.elytra-warning: "<gray><bold>提示：所有人都获得了鞘翅，但只能飞行 3 秒！</bold></gray>"
+game.returning: "<gray>正在将你送回大厅……</gray>"
+game.team-left: "<gray>你已离开当前队伍</gray>"
+game.random-teams: "<yellow>{player} 随机分配了队伍。</yellow>"
+game.auto-start: "<yellow>游戏将在 {seconds} 秒后自动开始</yellow>"
+game.respawn-in: "<green>{seconds} 秒后重生……</green>"
+game.breach: "<yellow>你的 </yellow><{wall_color}><bold>{wall}</bold></{wall_color}><yellow> 已被突破！</yellow>"
+game.wall-1: "外墙"
+game.wall-2: "中层墙"
+game.wall-3: "内墙"
+
+# 开始 / 结束
+game.starting-title: "<gold>游戏即将开始</gold>"
+game.starting-subtitle: "<gray>准备迎战……</gray>"
+game.cancelled-title: "<red>已取消</red>"
+game.started-title: "<green>游戏开始</green>"
+game.started-subtitle: "<gray>炸了它！</gray>"
+game.start-error-running: "<red>游戏已经在进行中了。</red>"
+game.start-error-min-players: "<red>至少需要 {min} 名玩家才能开始。</red>"
+game.start-error-empty: "<red>至少需要一名玩家才能开始。</red>"
+game.end-title: "<gold>游戏结束</gold>"
+game.winner-red: "红队获胜！"
+game.winner-green: "绿队获胜！"
+game.reason-not-enough: "游戏结束：人数不足"
+game.reason-admin: "游戏结束：管理员结束了本局游戏"
+
+# /hmw 命令
+command.usage: "<red>用法：/hmw <join|leave|list|stats|top|book|credits></red>"
+command.unknown-arena: "<red>未知的竞技场：{arena}</red>"
+command.unknown-player: "<red>找不到玩家：{player}</red>"
+command.list-empty: "<gray>当前没有活跃的游戏实例。</gray>"
+command.list-header: "<gold>活跃的游戏：</gold>"
+command.stats-header: "<gold>--- {player} ---</gold>"
+command.stats-main: "<yellow>局数：{games}  胜场：{wins}  击杀：{kills}  死亡：{deaths}</yellow>"
+command.stats-extra: "<yellow>导弹放置：{missiles}  护盾：{shields}  破墙：{breaches}</yellow>"
+command.top-header: "<gold>--- 胜场排行榜 ---</gold>"
+command.top-entry: "<yellow>{rank}. {player} - {wins} 胜（{games} 局）</yellow>"

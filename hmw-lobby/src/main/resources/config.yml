@@ -1,0 +1,41 @@
+# =====================================================================
+#  HMWLobby - Honey Missile Wars 大厅附属插件
+#  放在 BungeeCord 网络的 lobby 服务器上，配合 NPC 插件使用：
+#  给 NPC 绑定命令 "/hmwlobby join <场地id>"（或别名 /hmwl）即可。
+#  玩家点击后会被送往 game 服务器并自动进入匹配队列，
+#  场地偏好会通过 BungeeCord 插件消息转发给主插件。
+#
+#  注意：主插件（HoneyMissileWars）那边的 config.yml 需要开启
+#  world.auto-join-on-connect: true（专用小游戏服模式）。
+# =====================================================================
+
+# 目标游戏服务器（BungeeCord config.yml 里 servers 的名字）
+target-server: "hmw"
+
+# 可用场地列表：id -> 显示名。
+# id 必须与主插件 ArenaVariant 一致（classic, cliff, slope, hill, valley,
+# bridge, island, wall, hardcore, honey, thick, towers）。
+arenas:
+  classic: "经典 Classic"
+  cliff: "悬崖 Cliff"
+  slope: "斜坡 Slope"
+  hill: "山丘 Hill"
+  valley: "峡谷 Valley"
+  bridge: "断桥 Bridge"
+  island: "浮岛 Island"
+  wall: "高墙 Wall"
+  hardcore: "硬核 Hardcore"
+  honey: "蜂蜜 Honey"
+  thick: "厚墙 Thick"
+  towers: "塔楼 Towers"
+
+# 消息（MiniMessage 格式，{arena}/{server} 会被替换）
+messages:
+  sending: "<yellow>正在为你准备 </yellow><gold>{arena}</gold><yellow>，传送到 </yellow><gold>{server}</gold><yellow>……</yellow>"
+  sending-default: "<yellow>正在为你匹配游戏，传送到 </yellow><gold>{server}</gold><yellow>……</yellow>"
+  invalid-arena: "<red>未知场地 </red><gold>{arena}</gold><red>。输入 /hmwlobby list 查看可用场地。</red>"
+  list-header: "<gold>===== Honey Missile Wars 场地 =====</gold>"
+  list-entry: "<gray> - </gray><aqua>{id}</aqua><gray>（{name}）</gray>"
+  player-only: "<red>该命令只能由玩家执行（NPC 请绑定以玩家身份运行的命令）。</red>"
+  no-permission: "<red>你没有权限这样做。</red>"
+  reloaded: "<green>HMWLobby 配置已重载。</green>"
